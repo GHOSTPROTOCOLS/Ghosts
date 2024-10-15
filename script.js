@@ -37,8 +37,8 @@ const lines = [
     "> This lets us stealth-drop into the market, dodging aggro while delivering god-tier value to the meat puppets.",
     "> In the long game, we'll be the chrome-plated cyber-shamans of the new digital frontier.",
     "> Welcome to the future, samurai.",
-    "> echo 'Welcome to the future, samurai.'",
-    "> echo 'Welcome to the future, samurai.'",
+    "> Welcome to the future, samurai.",
+    "> Welcome to the future, samurai.",
     "> System Shutdown..."
 ];
 
@@ -90,7 +90,49 @@ function closeVideo(videoId) {
     }
 }
 
-// Clock function as before
+// Make elements draggable
+function makeDraggable(draggableElement, handleElement) {
+    let offsetX = 0, offsetY = 0, mouseX = 0, mouseY = 0;
+
+    handleElement.onmousedown = startDrag;
+
+    function startDrag(e) {
+        e.preventDefault();
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        document.onmouseup = stopDrag;
+        document.onmousemove = dragElement;
+    }
+
+    function dragElement(e) {
+        e.preventDefault();
+        offsetX = mouseX - e.clientX;
+        offsetY = mouseY - e.clientY;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        draggableElement.style.top = (draggableElement.offsetTop - offsetY) + "px";
+        draggableElement.style.left = (draggableElement.offsetLeft - offsetX) + "px";
+    }
+
+    function stopDrag() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+// Apply dragging to the terminal and video popups
+window.onload = function() {
+    const terminal = document.getElementById('terminal');
+    const video1 = document.getElementById('video1');
+    const video2 = document.getElementById('video2');
+
+    // Attach drag functionality to each element
+    makeDraggable(terminal, terminal.querySelector('.terminal-header'));
+    makeDraggable(video1, video1.querySelector('.video-header'));
+    makeDraggable(video2, video2.querySelector('.video-header'));
+};
+
+// Display the current time in the taskbar clock
 function updateClock() {
     const clock = document.getElementById('clock');
     if (clock) {
