@@ -35,18 +35,19 @@ const lines = [
     "> Users'll get their synapses rewired experiencing a whole new level of digital ecstasy.",
     "> market-drop --mode stealth --value high",
     "> This lets us stealth-drop into the market, dodging aggro while delivering god-tier value to the meat puppets.",
-    "> In the long game, we'll be the chrome-plated cyber-shamans of the new digital frontier.",
+    "> In the long game, we'll be the chrome-plated cyber-shamans of the new digital frontier.",,
     "> Welcome to the future, samurai.",
     "> System Shutdown..."
 ];
 
-// Define which lines require a longer display time and blinking effect
+// Define lines that require a longer display time
 const extendedLines = [
     "> Initializing System...",
     "> Connecting to the datasphere...",
     "> Loading modules...",
     "> recode --expansion --mode warp",
     "> market-drop --mode stealth --value high",
+    "> Welcome to the future, samurai."
 ];
 
 let lineIndex = 0;
@@ -70,19 +71,10 @@ function displayNextLine() {
         line.textContent = lineText;
         document.getElementById('terminal-content').appendChild(line);
 
-        // If line requires extended display and blinking
-        if (extendedLines.includes(lineText)) {
-            line.classList.add('blink'); // Apply blink class for animation
-            setTimeout(() => {
-                line.classList.remove('blink');
-                line.style.opacity = '1'; // Ensure it's visible after blinking
-                lineIndex++;
-                setTimeout(displayNextLine, 2000); // Pause longer after blink
-            }, 1600); // Blink duration
-        } else {
-            lineIndex++;
-            setTimeout(displayNextLine, 800); // Regular interval for other lines
-        }
+        // If line requires extended display duration
+        const delay = extendedLines.includes(lineText) ? 3000 : 800; // 3 seconds for extended lines, otherwise 0.8 seconds
+        lineIndex++;
+        setTimeout(displayNextLine, delay);
     }
 }
 
