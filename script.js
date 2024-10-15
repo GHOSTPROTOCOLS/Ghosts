@@ -37,8 +37,6 @@ const lines = [
     "> This lets us stealth-drop into the market, dodging aggro while delivering god-tier value to the meat puppets.",
     "> In the long game, we'll be the chrome-plated cyber-shamans of the new digital frontier.",
     "> Welcome to the future, samurai.",
-    "> Welcome to the future, samurai.",
-    "> Welcome to the future, samurai.",
     "> System Shutdown..."
 ];
 
