@@ -42,6 +42,15 @@ const lines = [
     "> System Shutdown..."
 ];
 
+// Define which lines require a longer display time and blinking effect
+const extendedLines = [
+    "> Initializing System...",
+    "> Connecting to the datasphere...",
+    "> Loading modules...",
+    "> recode --expansion --mode warp",
+    "> market-drop --mode stealth --value high",
+];
+
 let lineIndex = 0;
 
 function displayText() {
@@ -50,18 +59,32 @@ function displayText() {
         terminalContent.innerHTML = ''; // Reset content on open
         lineIndex = 0;
 
-        const interval = setInterval(() => {
-            if (lineIndex < lines.length) {
-                const line = document.createElement('div');
-                line.textContent = lines[lineIndex];
-                terminalContent.appendChild(line);
-                lineIndex++;
-            } else {
-                clearInterval(interval); // Stop interval once all lines are displayed
-            }
-        }, 800); // Display each line every 0.8 seconds
+        displayNextLine();
     } else {
         console.error('Terminal content element not found.');
+    }
+}
+
+function displayNextLine() {
+    if (lineIndex < lines.length) {
+        const lineText = lines[lineIndex];
+        const line = document.createElement('div');
+        line.textContent = lineText;
+        document.getElementById('terminal-content').appendChild(line);
+
+        // If line requires extended display and blinking
+        if (extendedLines.includes(lineText)) {
+            line.classList.add('blink'); // Apply blink class for animation
+            setTimeout(() => {
+                line.classList.remove('blink');
+                line.style.opacity = '1'; // Ensure it's visible after blinking
+                lineIndex++;
+                setTimeout(displayNextLine, 2000); // Pause longer after blink
+            }, 1600); // Blink duration
+        } else {
+            lineIndex++;
+            setTimeout(displayNextLine, 800); // Regular interval for other lines
+        }
     }
 }
 
@@ -126,7 +149,6 @@ window.onload = function() {
     const video1 = document.getElementById('video1');
     const video2 = document.getElementById('video2');
 
-    // Attach drag functionality to each element
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
     makeDraggable(video2, video2.querySelector('.video-header'));
