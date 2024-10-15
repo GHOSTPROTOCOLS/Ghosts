@@ -154,3 +154,13 @@ body, html {
     height: calc(100% - 30px); /* Adjust to leave room for the header */
     background: black;
 }
+
+.blink {
+    animation: blink 0.15s step-start infinite alternate; /* Faster blinking */
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
