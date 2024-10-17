@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows 95 re:GHOST</title>
+    <title>Windows 95 Desktop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="desktop">
-        <div class="folder" onclick="openManifesto()">
+        <!-- re:GHOST Terminal Icon -->
+        <div class="folder" onclick="openManifesto('terminal')">
             <img src="cmd-icon.png" alt="CMD Icon" class="folder-icon">
             <p>re:GHOST</p>
         </div>
-        <div class="folder" onclick="openVideo('video1')">
-            <img src="dusticon2.png" alt="Dust Icon" class="folder-icon">
+        <!-- re:DUST Terminal Icon -->
+        <div class="folder" onclick="openManifesto('terminalDust')">
+            <img src="cmd-icon.png" alt="CMD Icon" class="folder-icon">
             <p>re:DUST</p>
         </div>
-        <div class="folder" onclick="openVideo('video2')">
-            <img src="pumpicon.png" alt="Pump Icon" class="folder-icon">
+        <!-- re:PUMP Terminal Icon (Moved below re:DUST) -->
+        <div class="folder" onclick="openManifesto('terminalPump')">
+            <img src="cmd-icon.png" alt="CMD Icon" class="folder-icon">
             <p>re:PUMP</p>
+        </div>
+        <!-- OS Enterprise Video Icon (Moved below re:PUMP) -->
+        <div class="folder" id="os-enterprise-icon" onclick="openVideo('video1')">
+            <img src="os-enterprise-icon.png" alt="OS Enterprise Icon" class="folder-icon">
+            <p>OS Enterprise</p>
+        </div>
+        <!-- ATOMIC Video Icon -->
+        <div class="folder" onclick="openVideo('video2')">
+            <img src="pumpicon.png" alt="Atomic Icon" class="folder-icon">
+            <p>ATOMIC</p>
         </div>
     </div>
 
+    <!-- Taskbar -->
     <div class="taskbar">
         <div class="start-button">
             <img src="windows-logo2.png" alt="Start Icon" class="start-icon">
@@ -30,25 +44,46 @@
         <div class="clock" id="clock"></div>
     </div>
 
+    <!-- re:GHOST Terminal -->
     <div class="terminal" id="terminal">
         <div class="terminal-header">
             <span>Command Prompt - re:GHOST</span>
-            <button onclick="closeManifesto()">X</button>
+            <button onclick="closeManifesto('terminal')">X</button>
         </div>
         <div class="terminal-content" id="terminal-content"></div>
     </div>
 
+    <!-- re:DUST Terminal -->
+    <div class="terminal" id="terminalDust">
+        <div class="terminal-header">
+            <span>Command Prompt - re:DUST</span>
+            <button onclick="closeManifesto('terminalDust')">X</button>
+        </div>
+        <div class="terminal-content" id="terminalDust-content"></div>
+    </div>
+
+    <!-- re:PUMP Terminal -->
+    <div class="terminal" id="terminalPump">
+        <div class="terminal-header">
+            <span>Command Prompt - re:PUMP</span>
+            <button onclick="closeManifesto('terminalPump')">X</button>
+        </div>
+        <div class="terminal-content" id="terminalPump-content"></div>
+    </div>
+
+    <!-- OS Enterprise Video Popup -->
     <div class="video-popup" id="video1">
         <div class="video-header">
-            <span>Windows Media Player - re:DUST</span>
+            <span>Windows Media Player - OS Enterprise</span>
             <button onclick="closeVideo('video1')">X</button>
         </div>
         <video src="video1.mp4" autoplay controls></video>
     </div>
 
+    <!-- ATOMIC Video Popup -->
     <div class="video-popup" id="video2">
         <div class="video-header">
-            <span>Windows Media Player - re:PUMP</span>
+            <span>Windows Media Player - ATOMIC</span>
             <button onclick="closeVideo('video2')">X</button>
         </div>
         <video src="video2.mp4" autoplay controls></video>
