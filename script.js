@@ -246,13 +246,11 @@ window.onload = function() {
     const terminalDust = document.getElementById('terminalDust');
     const terminalPump = document.getElementById('terminalPump');
     const video1 = document.getElementById('video1');
-    const video2 = document.getElementById('video2');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
-    makeDraggable(video2, video2.querySelector('.video-header'));
 };
 
 // Display the current time in the taskbar clock
