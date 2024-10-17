@@ -1,33 +1,71 @@
-// Open a specified terminal (either re:GHOST, re:DUST, or re:PUMP)
+// Track terminal states and animation intervals
+const terminalState = {
+    terminal: false,
+    terminalDust: false,
+    terminalPump: false
+};
+
+const terminalIntervals = {}; // Store interval IDs for each terminal's animation
+
+// Open a specified terminal (re:GHOST, re:DUST, or re:PUMP)
 function openManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
-    if (terminal) {
+    if (terminal && !terminalState[terminalId]) { // Open only if not already active
         terminal.style.display = 'flex';
+        terminalState[terminalId] = true; // Mark as active
+
         if (terminalId === 'terminal') {
-            displayText('terminal-content', linesGHOST);
+            displayText('terminal-content', linesGHOST, terminalId);
         } else if (terminalId === 'terminalDust') {
-            displayText('terminalDust-content', linesDUST);
+            displayText('terminalDust-content', linesDUST, terminalId);
         } else if (terminalId === 'terminalPump') {
-            displayText('terminalPump-content', linesPUMP);
+            displayText('terminalPump-content', linesPUMP, terminalId);
         }
-    } else {
-        console.error(`Terminal ${terminalId} not found.`);
     }
 }
 
-// Close a specified terminal
+// Close a specified terminal and reset its state and animations
 function closeManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
     const terminalContent = terminal.querySelector('.terminal-content');
     if (terminal && terminalContent) {
         terminal.style.display = 'none';
         terminalContent.innerHTML = ''; // Clear text on close
-    } else {
-        console.error(`Terminal or terminal-content element ${terminalId} not found.`);
+        terminalState[terminalId] = false; // Mark as inactive
+
+        // Stop any ongoing animation
+        if (terminalIntervals[terminalId]) {
+            clearTimeout(terminalIntervals[terminalId]);
+            delete terminalIntervals[terminalId];
+        }
     }
 }
 
-// Open external links in a new tab for DB1 and DB2
+// Display text in terminal with proper control over reactivation and animation reset
+function displayText(contentId, textArray, terminalId) {
+    const terminalContent = document.getElementById(contentId);
+    if (terminalContent) {
+        terminalContent.innerHTML = ''; // Reset content on open
+        let index = 0;
+
+        function nextLine() {
+            if (index < textArray.length && terminalState[terminalId]) { // Continue only if terminal is active
+                const line = document.createElement('div');
+                line.textContent = textArray[index];
+                terminalContent.appendChild(line);
+                index++;
+
+                const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
+                terminalIntervals[terminalId] = setTimeout(nextLine, delay); // Schedule the next line
+            }
+        }
+        nextLine(); // Start displaying the text
+    } else {
+        console.error(`Terminal content element ${contentId} not found.`);
+    }
+}
+
+// Open external links for DB1 and DB2 icons
 function openLink(url) {
     window.open(url, '_blank');
 }
@@ -169,27 +207,6 @@ const extendedLines = [
     "> LINK rePUMP.integrate_reDUST()"
 ];
 
-function displayText(contentId, textArray) {
-    const terminalContent = document.getElementById(contentId);
-    if (terminalContent) {
-        terminalContent.innerHTML = ''; // Reset content on open
-        let index = 0;
-        function nextLine() {
-            if (index < textArray.length) {
-                const line = document.createElement('div');
-                line.textContent = textArray[index];
-                terminalContent.appendChild(line);
-                index++;
-                const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
-                setTimeout(nextLine, delay);
-            }
-        }
-        nextLine();
-    } else {
-        console.error(`Terminal content element ${contentId} not found.`);
-    }
-}
-
 // Open a video popup and start playing the video
 function openVideo(videoId) {
     const videoPopup = document.getElementById(videoId);
@@ -245,7 +262,7 @@ function makeDraggable(draggableElement, handleElement) {
     }
 }
 
-// Apply dragging to all elements on page load
+// Apply draggable functionality to all elements on page load
 window.onload = function() {
     const terminal = document.getElementById('terminal');
     const terminalDust = document.getElementById('terminalDust');
