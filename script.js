@@ -1,4 +1,4 @@
-// Open a specified terminal (either re:GHOST or re:DUST)
+// Open a specified terminal (either re:GHOST, re:DUST, or re:PUMP)
 function openManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
     if (terminal) {
@@ -240,15 +240,17 @@ function makeDraggable(draggableElement, handleElement) {
     }
 }
 
-// Apply dragging to all elements
+// Apply dragging to all elements on page load
 window.onload = function() {
     const terminal = document.getElementById('terminal');
     const terminalDust = document.getElementById('terminalDust');
+    const terminalPump = document.getElementById('terminalPump');
     const video1 = document.getElementById('video1');
     const video2 = document.getElementById('video2');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
+    makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
     makeDraggable(video2, video2.querySelector('.video-header'));
 };
