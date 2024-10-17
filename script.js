@@ -1,80 +1,187 @@
-// Open the manifesto terminal
-function openManifesto() {
-    const terminal = document.getElementById('terminal');
+// Open a specified terminal (either re:GHOST or re:DUST)
+function openManifesto(terminalId) {
+    const terminal = document.getElementById(terminalId);
     if (terminal) {
         terminal.style.display = 'flex';
-        displayText();
+        if (terminalId === 'terminal') {
+            displayText('terminal-content', linesGHOST);
+        } else if (terminalId === 'terminalDust') {
+            displayText('terminalDust-content', linesDUST);
+        } else if (terminalId === 'terminalPump') {
+            displayText('terminalPump-content', linesPUMP);
+        }
     } else {
-        console.error('Terminal element not found.');
+        console.error(`Terminal ${terminalId} not found.`);
     }
 }
 
-// Close the manifesto terminal
-function closeManifesto() {
-    const terminal = document.getElementById('terminal');
-    const terminalContent = document.getElementById('terminal-content');
+// Close a specified terminal
+function closeManifesto(terminalId) {
+    const terminal = document.getElementById(terminalId);
+    const terminalContent = terminal.querySelector('.terminal-content');
     if (terminal && terminalContent) {
         terminal.style.display = 'none';
         terminalContent.innerHTML = ''; // Clear text on close
     } else {
-        console.error('Terminal or terminal-content element not found.');
+        console.error(`Terminal or terminal-content element ${terminalId} not found.`);
     }
 }
 
-// Styled text to simulate coding lines in the terminal
-const lines = [
-    "> Initializing System...",
-    "> Connecting to the datasphere...",
-    "> Jacking into the datasphere to outmaneuver corp rivals.",
-    "> Loading modules...",
-    "mod-load --inject \"blackice.exe\"",
-    "> No frontal assault; ghost-modding, injecting our proprietary blackice.",
-    "> tech-scrape --target hottest_tech --filter latest",
-    "> Picking the hottest tech and recoding it into a reality-warping expansion pack.",
-    "> recode --expansion --mode warp",
-    "> Users'll get their synapses rewired experiencing a whole new level of digital ecstasy.",
-    "> market-drop --mode stealth --value high",
-    "> This lets us stealth-drop into the market, dodging aggro while delivering god-tier value to the meat puppets.",
-    "> In the long game, we'll be the chrome-plated cyber-shamans of the new digital frontier.",,
-    "> Welcome to the future, samurai.",
-    "> System Shutdown..."
+// New text for re:GHOST
+const linesGHOST = [
+    "C:\\>EXECUTE_MISSION.exe",
+    "[INITIATING...] CyberOps::MarketInfiltration v2.077",
+    ">> JACKING_IN_PROGRESS",
+    ">> TARGET_ACQUIRED: ?pref_project?",
+    ">> STEALTH_MODE: ACTIVATED",
+    "",
+    "> def ghost_mod(target_project):",
+    "    inject(proprietary_blackice)",
+    "    cherry_pick(hottest_tech)",
+    "    recode_reality(target_project)",
+    "    return reality_warping_expansion_pack",
+    "",
+    "> class SynapseRewirer:",
+    "    def __init__(self):",
+    "        self.digital_ecstasy_level = \"WHOLE_NEW\"",
+    "",
+    "    def rewire(self, user):",
+    "        user.experience(self.digital_ecstasy_level)",
+    "",
+    "> EXECUTE stealth_market_drop()",
+    "> AVOID aggro_detection()",
+    "> DELIVER god_tier_value(meat_puppets)",
+    "",
+    "[LONG_GAME_STRATEGY]:",
+    "    while True:",
+    "        self.status = \"chrome_plated_cyber_shaman\"",
+    "        digital_frontier.conquer()",
+    "",
+    ">> MISSION_STATUS: IN_PROGRESS",
+    ">> ETA_TO_FUTURE: NOW",
+    "",
+    "C:\\>WAKE_UP_SAMURAI.exe"
+];
+
+// Existing text for re:DUST
+const linesDUST = [
+    "C:\\>INIT_DUST_PROTOCOL.exe",
+    "[LOADING...] Crypto::Dust::Aggregator v0.1.3",
+    ">> SCANNING_BLOCKCHAIN_NETWORK",
+    ">> DUST_DETECTED: 1000000+ wallets",
+    ">> UNUTILIZED_ASSETS: $BILLIONS",
+    "",
+    "> def DUST_PROTOCOL():",
+    "    \"\"\"Middle_finger.raise() to wasted_assets\"\"\"",
+    "    for wallet in BLOCKCHAIN.wallets:",
+    "        if wallet.balance < DUST_THRESHOLD:",
+    "            DUST_PROTOCOL.sweep(wallet)",
+    "",
+    "    DUST = aggregate(swept_assets)",
+    "    OPPORTUNITY = create_regenerative_finance(DUST)",
+    "    return OPPORTUNITY",
+    "",
+    "> class DustIntegrator:",
+    "    def __init__(self):",
+    "        self.supported_chains = [",
+    "            \"EVM\", \"SOLANA\", \"COSMOS\", \"SONEIUM\", \"MONAD\"",
+    "        ]",
+    "",
+    "    def integrate(self, platform):",
+    "        platform.extract_revenue(self.generated_income)",
+    "        platform.customize_distribution(self.capital)",
+    "",
+    "> EXECUTE DustProtocol.sweep_all()",
+    "> TRANSFORM dust_to_usable_assets()",
+    "> CALCULATE untapped_value()",
+    "",
+    "[OUTPUT]: Billions_in_value = Millions_of_wallets * Dust_per_wallet",
+    "",
+    "C:\\>INITIATE_CRYPTO_REVOLUTION.exe"
+];
+
+// Content for the new re:PUMP terminal
+const linesPUMP = [
+    "C:\\>INIT_rePUMP.exe",
+    "[LOADING...] PUMP::Enhancer v1.337",
+    "",
+    ">> TARGETING: PUMP.fun",
+    ">> MODE: GHOST_MOD",
+    ">> UPGRADES: INITIALIZING",
+    "",
+    "> class rePUMP(PUMPfun):",
+    "    def __init__(self):",
+    "        super().__init__()",
+    "        self.filters = self.filters.upgrade()",
+    "        self.tabs.add(\"influencer\")",
+    "        self.fees = FeeRedistributor()",
+    "        self.cto_pumping = True",
+    "",
+    "    def ghost_mod(self):",
+    "        self.interface = PUMPfun.interface  # No new UI",
+    "        self.experience = \"enhanced\"",
+    "",
+    "> def integrate_reDUST():",
+    "    reDUST.connect(rePUMP)",
+    "    enable_dust_token_farming()",
+    "",
+    "    while True:",
+    "        promising_project = reDUST.scan_bonding_projects()",
+    "        if promising_project:",
+    "            reDUST.swap(promising_project)",
+    "",
+    "> EXECUTE rePUMP.ghost_mod()",
+    "> LINK rePUMP.integrate_reDUST()",
+    "",
+    "[STATUS]:",
+    ">> FILTERS: SHARPENED",
+    ">> INFLUENCER_TAB: ONLINE",
+    ">> FEES: REDISTRIBUTING",
+    ">> CTO_PUMPING: ACTIVE",
+    ">> MODULARITY: 100%",
+    "",
+    "C:\\>ENHANCE_YOUR_REALITY.exe"
 ];
 
 // Define lines that require a longer display time
 const extendedLines = [
-    "> Initializing System...",
-    "> Connecting to the datasphere...",
-    "> Loading modules...",
-    "> recode --expansion --mode warp",
-    "> market-drop --mode stealth --value high",
-    "> Welcome to the future, samurai."
+    "C:\\>EXECUTE_MISSION.exe",
+    "[INITIATING...] CyberOps::MarketInfiltration v2.077",
+    ">> JACKING_IN_PROGRESS",
+    "> EXECUTE stealth_market_drop()",
+    "> AVOID aggro_detection()",
+    "> DELIVER god_tier_value(meat_puppets)",
+    ">> ETA_TO_FUTURE: NOW",
+    "C:\\>INIT_DUST_PROTOCOL.exe",
+    "[LOADING...] Crypto::Dust::Aggregator v0.1.3",
+    ">> SCANNING_BLOCKCHAIN_NETWORK",
+    "> EXECUTE DustProtocol.sweep_all()",
+    "> CALCULATE untapped_value()",
+    "C:\\>INIT_rePUMP.exe",
+    "[LOADING...] PUMP::Enhancer v1.337",
+    ">> UPGRADES: INITIALIZING",
+    "> EXECUTE rePUMP.ghost_mod()",
+    "> LINK rePUMP.integrate_reDUST()"
 ];
 
-let lineIndex = 0;
-
-function displayText() {
-    const terminalContent = document.getElementById('terminal-content');
+function displayText(contentId, textArray) {
+    const terminalContent = document.getElementById(contentId);
     if (terminalContent) {
         terminalContent.innerHTML = ''; // Reset content on open
-        lineIndex = 0;
-
-        displayNextLine();
+        let index = 0;
+        function nextLine() {
+            if (index < textArray.length) {
+                const line = document.createElement('div');
+                line.textContent = textArray[index];
+                terminalContent.appendChild(line);
+                index++;
+                const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
+                setTimeout(nextLine, delay);
+            }
+        }
+        nextLine();
     } else {
-        console.error('Terminal content element not found.');
-    }
-}
-
-function displayNextLine() {
-    if (lineIndex < lines.length) {
-        const lineText = lines[lineIndex];
-        const line = document.createElement('div');
-        line.textContent = lineText;
-        document.getElementById('terminal-content').appendChild(line);
-
-        // If line requires extended display duration
-        const delay = extendedLines.includes(lineText) ? 3000 : 800; // 3 seconds for extended lines, otherwise 0.8 seconds
-        lineIndex++;
-        setTimeout(displayNextLine, delay);
+        console.error(`Terminal content element ${contentId} not found.`);
     }
 }
 
@@ -84,7 +191,7 @@ function openVideo(videoId) {
     if (videoPopup) {
         videoPopup.style.display = 'flex';
         const videoElement = videoPopup.querySelector('video');
-        videoElement.play(); // Start playing the video
+        videoElement.play();
     } else {
         console.error(`Video popup ${videoId} not found.`);
     }
@@ -97,7 +204,7 @@ function closeVideo(videoId) {
         videoPopup.style.display = 'none';
         const videoElement = videoPopup.querySelector('video');
         videoElement.pause();
-        videoElement.currentTime = 0; // Reset video to start
+        videoElement.currentTime = 0;
     } else {
         console.error(`Video popup ${videoId} not found.`);
     }
@@ -133,13 +240,15 @@ function makeDraggable(draggableElement, handleElement) {
     }
 }
 
-// Apply dragging to the terminal and video popups
+// Apply dragging to all elements
 window.onload = function() {
     const terminal = document.getElementById('terminal');
+    const terminalDust = document.getElementById('terminalDust');
     const video1 = document.getElementById('video1');
     const video2 = document.getElementById('video2');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
+    makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
     makeDraggable(video2, video2.querySelector('.video-header'));
 };
