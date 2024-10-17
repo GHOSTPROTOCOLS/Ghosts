@@ -112,7 +112,7 @@ const linesDUST = [
     "[LOADING...] Crypto::Dust::Aggregator v0.1.3",
     ">> SCANNING_BLOCKCHAIN_NETWORK",
     ">> DUST_DETECTED: 1000000+ wallets",
-    ">> UNUTILIZED_ASSETS: $BILLIONS",
+    ">> UNUTILIZED_ASSETS: $HECTOCORNS",
     "",
     "> def DUST_PROTOCOL():",
     "    \"\"\"Middle_finger.raise() to wasted_assets\"\"\"",
