@@ -32,7 +32,7 @@ const linesGHOST = [
     "C:\\>EXECUTE_MISSION.exe",
     "[INITIATING...] CyberOps::MarketInfiltration v2.077",
     ">> JACKING_IN_PROGRESS",
-    ">> TARGET_ACQUIRED: ?pref_project?",
+    ">> TARGET_ACQUIRED: PREF PROJECT",
     ">> STEALTH_MODE: ACTIVATED",
     "",
     "> def ghost_mod(target_project):",
@@ -58,7 +58,7 @@ const linesGHOST = [
     "        digital_frontier.conquer()",
     "",
     ">> MISSION_STATUS: IN_PROGRESS",
-    ">> ETA_TO_FUTURE: NOW",
+    ">> ETA: NOW",
     "",
     "C:\\>WAKE_UP_SAMURAI.exe"
 ];
