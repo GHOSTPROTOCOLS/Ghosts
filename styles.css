@@ -162,3 +162,18 @@ body, html {
     height: calc(100% - 30px); /* Adjust to leave room for the header */
     background: black;
 }
+
+.top-right {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Right-align the text */
+}
+
+.folder-right {
+    text-align: center; /* Align text to the right for right-side icons */
+    margin-bottom: 20px;
+    color: #ffffff;
+}
