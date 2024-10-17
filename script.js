@@ -27,6 +27,11 @@ function closeManifesto(terminalId) {
     }
 }
 
+// Open external links in a new tab for DB1 and DB2
+function openLink(url) {
+    window.open(url, '_blank');
+}
+
 // New text for re:GHOST
 const linesGHOST = [
     "C:\\>EXECUTE_MISSION.exe",
