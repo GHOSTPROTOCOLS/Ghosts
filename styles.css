@@ -8,14 +8,13 @@ body, html {
 }
 
 .desktop {
-    position: relative;
-    width: 100%;
-    height: calc(100% - 40px); /* Adjust for taskbar height */
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column; /* Arrange icons vertically */
     align-items: flex-start; /* Ensure icons align to the left */
-    justify-content: flex-start;
-    padding: 20px;
 }
 
 .folder {
@@ -84,8 +83,8 @@ body, html {
     border: 2px inset #808080;
     min-width: 60px;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
 }
 
@@ -169,11 +168,25 @@ body, html {
     right: 20px; /* Adjust as needed */
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Right-align the text */
+    align-items: flex-end; /* Align icons to the right */
 }
 
 .folder-right {
-    text-align: center; /* Align text to the right for right-side icons */
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align icon and text to the right */
     color: #ffffff;
+    cursor: pointer; /* Hand cursor on hover */
+    margin-bottom: 20px; /* Space between icons */
+}
+
+.folder-right img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 5px; /* Space between icon and text */
+}
+
+.folder-right p {
+    margin: 0;
+    text-align: right; /* Right-align the text */
 }
