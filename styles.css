@@ -61,6 +61,12 @@ body, html {
     background: linear-gradient(to bottom, #C0C0C0, #A0A0A0);
     box-shadow: inset 1px 1px #FFFFFF, inset -1px -1px #000000;
     cursor: pointer;
+    transition: transform 0.1s ease-in-out; /* Smooth transition */
+}
+
+.start-button:active {
+    transform: translateY(2px); /* Push the button down slightly on click */
+    box-shadow: inset 1px 1px 0px #808080, inset -1px -1px 0px #FFFFFF; /* Simulate pressed effect */
 }
 
 .start-button img {
@@ -162,6 +168,23 @@ body, html {
     background: black;
 }
 
+#startVideo {
+    width: 1500px;
+    height: 880px;
+    top: 5%; /* Adjust as needed */
+    left: 10%; /* Adjust as needed */
+    position: absolute;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    display: none;
+    flex-direction: column;
+}
+
+#startVideo video {
+    width: 100%;
+    height: calc(100% - 30px); /* Adjust to leave room for the header */
+}
+
 .top-right {
     position: absolute;
     top: 20px; /* Adjust as needed */
@@ -199,6 +222,4 @@ body, html {
     display: block;
     text-align: center;
     margin-top: 20px; /* Optional: Adds some space above the clickable line */
-    cursor: pointer;
-    }
-
+}
