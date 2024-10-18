@@ -25,6 +25,7 @@ function openManifesto(terminalId) {
         console.error(`Terminal ${terminalId} not found or already active.`);
     }
 }
+
 // Close a specified terminal and reset its state and animations
 function closeManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
@@ -42,6 +43,7 @@ function closeManifesto(terminalId) {
     }
 }
 
+// Display text in terminal with control over reactivation and animation reset
 function displayText(contentId, textArray, terminalId, addClickable) {
     const terminalContent = document.getElementById(contentId);
     if (terminalContent) {
@@ -72,13 +74,12 @@ function displayText(contentId, textArray, terminalId, addClickable) {
     }
 }
 
-
 // Function to open the retro-style access denied pop-up
 function openAccessDeniedPopup(target) {
     alert(`01001111 01101111 01110000 01110011 00100001 00100000\n🔒 ACCESS_DENIED: [ERR_INSUFFICIENT_PRIVILEGES] 🔒\nInitializing time-travel protocols... ⏳\nRecalibrate and retry when the stars align. 🌟\nHINT: Soon™`);
 }
 
-// Open external links for DB1 and DB2 icons
+// Open external links for DB1, DB2, and DB3 icons
 function openLink(url) {
     window.open(url, '_blank');
 }
@@ -243,6 +244,34 @@ function closeVideo(videoId) {
     }
 }
 
+// Function to open start button video popup
+function openStartVideo() {
+    const startVideoPopup = document.getElementById('startVideo');
+    if (startVideoPopup) {
+        startVideoPopup.style.display = 'flex';
+        startVideoPopup.style.top = '50%';  // Center vertically
+        startVideoPopup.style.left = '50%'; // Center horizontally
+        startVideoPopup.style.transform = 'translate(-50%, -50%)'; // Adjust to center
+        const videoElement = startVideoPopup.querySelector('video');
+        videoElement.play(); // Play video on open
+    } else {
+        console.error('Start video popup not found.');
+    }
+}
+
+// Function to close start button video popup
+function closeStartVideo() {
+    const startVideoPopup = document.getElementById('startVideo');
+    if (startVideoPopup) {
+        startVideoPopup.style.display = 'none';
+        const videoElement = startVideoPopup.querySelector('video');
+        videoElement.pause();
+        videoElement.currentTime = 0; // Reset playback
+    } else {
+        console.error('Start video popup not found.');
+    }
+}
+
 // Make elements draggable
 function makeDraggable(draggableElement, handleElement) {
     let offsetX = 0, offsetY = 0, mouseX = 0, mouseY = 0;
@@ -279,11 +308,17 @@ window.onload = function() {
     const terminalDust = document.getElementById('terminalDust');
     const terminalPump = document.getElementById('terminalPump');
     const video1 = document.getElementById('video1');
+    const startButton = document.querySelector('.start-button');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
+
+    // Add click event for the start button to open the video
+    if (startButton) {
+        startButton.addEventListener('click', openStartVideo);
+    }
 };
 
 // Display the current time in the taskbar clock
