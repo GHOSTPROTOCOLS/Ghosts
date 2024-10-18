@@ -44,7 +44,7 @@ function closeManifesto(terminalId) {
 }
 
 // Display text in terminal with proper control over reactivation and animation reset
-function displayText(contentId, textArray, terminalId) {
+function displayText(contentId, textArray, terminalId, addClickable) {
     const terminalContent = document.getElementById(contentId);
     if (terminalContent) {
         terminalContent.innerHTML = ''; // Reset content on open
@@ -59,8 +59,8 @@ function displayText(contentId, textArray, terminalId) {
 
                 const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
                 terminalIntervals[terminalId] = setTimeout(nextLine, delay); // Schedule the next line
-            } else if (index === textArray.length && terminalState[terminalId]) {
-                // Add clickable line at the end
+            } else if (index === textArray.length && terminalState[terminalId] && addClickable) {
+                // Add clickable line at the end ONLY if addClickable is true
                 const clickableLine = document.createElement('div');
                 clickableLine.innerHTML = terminalId === 'terminalDust' ?
                     '<span class="clickable" onclick="openAccessDeniedPopup(\'re:DUST\')">Click here to open re:DUST</span>' :
