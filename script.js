@@ -15,17 +15,16 @@ function openManifesto(terminalId) {
         terminalState[terminalId] = true; // Mark as active
 
         if (terminalId === 'terminal') {
-            displayText('terminal-content', linesGHOST, terminalId);
+            displayText('terminal-content', linesGHOST, terminalId, false); // No clickable text
         } else if (terminalId === 'terminalDust') {
-            displayText('terminalDust-content', linesDUST, terminalId);
+            displayText('terminalDust-content', linesDUST, terminalId, true); // With clickable text
         } else if (terminalId === 'terminalPump') {
-            displayText('terminalPump-content', linesPUMP, terminalId);
+            displayText('terminalPump-content', linesPUMP, terminalId, true); // With clickable text
         }
     } else {
-        console.error(`Terminal ${terminalId} not found.`);
+        console.error(`Terminal ${terminalId} not found or already active.`);
     }
 }
-
 // Close a specified terminal and reset its state and animations
 function closeManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
@@ -43,7 +42,6 @@ function closeManifesto(terminalId) {
     }
 }
 
-// Display text in terminal with proper control over reactivation and animation reset
 function displayText(contentId, textArray, terminalId, addClickable) {
     const terminalContent = document.getElementById(contentId);
     if (terminalContent) {
@@ -73,6 +71,7 @@ function displayText(contentId, textArray, terminalId, addClickable) {
         console.error(`Terminal content element ${contentId} not found.`);
     }
 }
+
 
 // Function to open the retro-style access denied pop-up
 function openAccessDeniedPopup(target) {
