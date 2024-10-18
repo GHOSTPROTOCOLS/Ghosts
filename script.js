@@ -193,8 +193,6 @@ const linesPUMP = [
     ">> FILTERS: SHARPENED",
     ">> INFLUENCER_TAB: ONLINE",
     ">> FEES: REDISTRIBUTING",
-    ">> CTO_PUMPING: ACTIVE",
-    ">> MODULARITY: 100%",
     "",
     "C:\\>ENHANCE_YOUR_REALITY.exe"
 ];
