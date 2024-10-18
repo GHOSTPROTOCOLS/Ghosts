@@ -196,4 +196,9 @@ body, html {
     color: #00ff00;
     text-decoration: underline;
     cursor: pointer;
-}
+    display: block;
+    text-align: center;
+    margin-top: 20px; /* Optional: Adds some space above the clickable line */
+    cursor: pointer;
+    }
+
