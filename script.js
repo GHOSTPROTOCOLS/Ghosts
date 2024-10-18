@@ -21,6 +21,8 @@ function openManifesto(terminalId) {
         } else if (terminalId === 'terminalPump') {
             displayText('terminalPump-content', linesPUMP, terminalId);
         }
+    } else {
+        console.error(`Terminal ${terminalId} not found.`);
     }
 }
 
@@ -57,12 +59,24 @@ function displayText(contentId, textArray, terminalId) {
 
                 const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
                 terminalIntervals[terminalId] = setTimeout(nextLine, delay); // Schedule the next line
+            } else if (index === textArray.length && terminalState[terminalId]) {
+                // Add clickable line at the end
+                const clickableLine = document.createElement('div');
+                clickableLine.innerHTML = terminalId === 'terminalDust' ?
+                    '<span class="clickable" onclick="openAccessDeniedPopup(\'re:DUST\')">Click here to open re:DUST</span>' :
+                    '<span class="clickable" onclick="openAccessDeniedPopup(\'re:PUMP\')">Click here to open re:PUMP</span>';
+                terminalContent.appendChild(clickableLine);
             }
         }
         nextLine(); // Start displaying the text
     } else {
         console.error(`Terminal content element ${contentId} not found.`);
     }
+}
+
+// Function to open the retro-style access denied pop-up
+function openAccessDeniedPopup(target) {
+    alert(`01001111 01101111 01110000 01110011 00100001 00100000\n🔒 ACCESS_DENIED: [ERR_INSUFFICIENT_PRIVILEGES] 🔒\nInitializing time-travel protocols... ⏳\nRecalibrate and retry when the stars align. 🌟\nHINT: Soon™`);
 }
 
 // Open external links for DB1 and DB2 icons
