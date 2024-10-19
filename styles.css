@@ -105,6 +105,7 @@ body, html {
     border: 2px solid #ffffff;
     display: none;
     flex-direction: column;
+    z-index: 1000
 }
 
 .terminal-header {
@@ -142,6 +143,7 @@ body, html {
     border: 2px solid #ffffff;
     display: none;
     flex-direction: column;
+    z-index: 1000
 }
 
 .video-header {
@@ -166,6 +168,7 @@ body, html {
     width: 100%;
     height: calc(100% - 30px); /* Adjust to leave room for the header */
     background: black;
+    z-index: 1000
 }
 
 #startVideo {
@@ -178,6 +181,7 @@ body, html {
     border: 2px solid #ffffff;
     display: none;
     flex-direction: column;
+    z-index: 1000
 }
 
 #startVideo video {
@@ -222,4 +226,13 @@ body, html {
     display: block;
     text-align: center;
     margin-top: 20px; /* Optional: Adds some space above the clickable line */
+}
+
+/* Style for the spawned bitcoin image */
+.bitcoin-icon {
+    position: absolute;
+    width: 40px; /* Adjust the size if needed */
+    height: 40px;
+    pointer-events: none; /* Makes sure it doesn't interfere with other clicks */
+    z-index: 500; /* Ensure it's on top of other elements */
 }
