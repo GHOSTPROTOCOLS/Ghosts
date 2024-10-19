@@ -302,6 +302,35 @@ function makeDraggable(draggableElement, handleElement) {
     }
 }
 
+// Function to spawn bitcoin.png when the user clicks on the desktop
+function spawnBitcoin(event) {
+    const bitcoinImg = document.createElement('img');
+    bitcoinImg.src = 'bitcoin.png'; // Ensure bitcoin.png is in the correct folder
+    bitcoinImg.className = 'bitcoin-icon';
+    bitcoinImg.style.left = `${event.pageX}px`;
+    bitcoinImg.style.top = `${event.pageY}px`;
+
+    document.body.appendChild(bitcoinImg);
+
+    // Optional: Remove the image after 5 seconds
+    setTimeout(() => {
+        bitcoinImg.remove();
+    }, 1000);
+}
+
+// Listen for desktop clicks to spawn bitcoin images
+document.addEventListener('click', function(event) {
+    // Check if the click is not on an icon or another element
+    if (!event.target.closest('.folder') && !event.target.closest('.start-button') && !event.target.closest('.video-popup')) {
+        spawnBitcoin(event);
+    }
+});
+
+// Ensure to call this on window load or initialization
+window.onload = function() {
+    attachClickListenerToDesktop(); // Initialize click listener on the desktop
+};
+
 // Apply draggable functionality to all elements on page load
 window.onload = function() {
     const terminal = document.getElementById('terminal');
