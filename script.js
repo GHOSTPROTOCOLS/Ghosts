@@ -343,6 +343,7 @@ window.onload = function() {
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
+    makeDraggable(startVideo, startVideo.querySelector('.video-header')); // Make the start video draggable
 
     // Add click event for the start button to open the video
     if (startButton) {
