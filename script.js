@@ -312,10 +312,16 @@ function spawnBitcoin(event) {
 
     document.body.appendChild(bitcoinImg);
 
-    // Optional: Remove the image after 5 seconds
+    // Set timeout for fade out (500ms for fade, and then remove)
+    setTimeout(() => {
+        bitcoinImg.style.transition = 'opacity 0.5s ease';
+        bitcoinImg.style.opacity = '0';
+    }, 4000); // Fade out starts after 0.3 seconds
+
+    // Remove the image after fade-out is done
     setTimeout(() => {
         bitcoinImg.remove();
-    }, 1000);
+    }, 4500); // Remove the image after the fade-out transition (300ms + 500ms)
 }
 
 // Listen for desktop clicks to spawn bitcoin images
