@@ -132,14 +132,13 @@ const linesGHOST = [
 
 // Existing text for re:DUST
 const linesDUST = [
-    "C:\\>INIT_DUST_PROTOCOL.exe",
+    "C:\\>INIT_re_DUST.exe",
     "[LOADING...] Crypto::Dust::Aggregator v0.1.3",
     ">> SCANNING_BLOCKCHAIN_NETWORK",
     ">> DUST_DETECTED: 1000000+ wallets",
     ">> UNUTILIZED_ASSETS: $HECTOCORNS",
     "",
     "> def DUST_PROTOCOL():",
-    "    \"\"\"Middle_finger.raise() to wasted_assets\"\"\"",
     "    for wallet in BLOCKCHAIN.wallets:",
     "        if wallet.balance < DUST_THRESHOLD:",
     "            DUST_PROTOCOL.sweep(wallet)",
@@ -151,7 +150,7 @@ const linesDUST = [
     "> class DustIntegrator:",
     "    def __init__(self):",
     "        self.supported_chains = [",
-    "            \"EVM\", \"SOLANA\", \"COSMOS\", \"SONEIUM\", \"MONAD\"",
+    "           -- INFINITE MODULARITY --
     "        ]",
     "",
     "    def integrate(self, platform):",
