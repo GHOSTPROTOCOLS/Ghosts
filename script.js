@@ -149,9 +149,8 @@ const linesDUST = [
     "",
     "> class DustIntegrator:",
     "    def __init__(self):",
-    "        self.supported_chains = [",
-    "           -- INFINITE MODULARITY --
-    "        ]",
+    "        self.supported_chains = ",
+    "           -- INFINITE MODULARITY --",
     "",
     "    def integrate(self, platform):",
     "        platform.extract_revenue(self.generated_income)",
