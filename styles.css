@@ -172,8 +172,8 @@ body, html {
 }
 
 #startVideo {
-    width: 1500px;
-    height: 880px;
+    width: 1200px;
+    height: 725px;
     top: 5%; /* Adjust as needed */
     left: 10%; /* Adjust as needed */
     position: absolute;
