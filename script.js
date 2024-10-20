@@ -2,7 +2,9 @@
 const terminalState = {
     terminal: false,
     terminalDust: false,
-    terminalPump: false
+    terminalPump: false,
+    osEnterprise: false,
+    startVideo: false
 };
 
 // Initialize z-index counter for terminals
@@ -227,56 +229,58 @@ const extendedLines = [
     "> LINK rePUMP.integrate_reDUST()"
 ];
 
-// Open a video popup and start playing the video
+// Open OS Enterprise video and bring it to the front
 function openVideo(videoId) {
     const videoPopup = document.getElementById(videoId);
     if (videoPopup) {
+        videoPopup.style.zIndex = ++zIndexCounter; // Bring to front
         videoPopup.style.display = 'flex';
         const videoElement = videoPopup.querySelector('video');
-        videoElement.play();
-    } else {
-        console.error(`Video popup ${videoId} not found.`);
+        if (videoElement) {
+            videoElement.play();
+        }
+        terminalState[videoId] = true;
     }
 }
 
-// Close a video popup and stop the video
+// Close OS Enterprise or Start video
 function closeVideo(videoId) {
     const videoPopup = document.getElementById(videoId);
     if (videoPopup) {
         videoPopup.style.display = 'none';
         const videoElement = videoPopup.querySelector('video');
-        videoElement.pause();
-        videoElement.currentTime = 0;
-    } else {
-        console.error(`Video popup ${videoId} not found.`);
+        if (videoElement) {
+            videoElement.pause();
+            videoElement.currentTime = 0;
+        }
+        terminalState[videoId] = false;
     }
 }
-
-// Function to open start button video popup
+// Start video popup
 function openStartVideo() {
     const startVideoPopup = document.getElementById('startVideo');
     if (startVideoPopup) {
+        startVideoPopup.style.zIndex = ++zIndexCounter; // Bring to front
         startVideoPopup.style.display = 'flex';
-        startVideoPopup.style.top = '50%';  // Center vertically
-        startVideoPopup.style.left = '50%'; // Center horizontally
-        startVideoPopup.style.transform = 'translate(-50%, -50%)'; // Adjust to center
         const videoElement = startVideoPopup.querySelector('video');
-        videoElement.play(); // Play video on open
-    } else {
-        console.error('Start video popup not found.');
+        if (videoElement) {
+            videoElement.play();
+        }
+        terminalState['startVideo'] = true;
     }
 }
 
-// Function to close start button video popup
+// Close Start video
 function closeStartVideo() {
     const startVideoPopup = document.getElementById('startVideo');
     if (startVideoPopup) {
         startVideoPopup.style.display = 'none';
         const videoElement = startVideoPopup.querySelector('video');
-        videoElement.pause();
-        videoElement.currentTime = 0; // Reset playback
-    } else {
-        console.error('Start video popup not found.');
+        if (videoElement) {
+            videoElement.pause();
+            videoElement.currentTime = 0;
+        }
+        terminalState['startVideo'] = false;
     }
 }
 
