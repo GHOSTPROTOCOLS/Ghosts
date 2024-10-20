@@ -39,11 +39,11 @@
     </div>
     <!-- New Icons for DB1 and DB2, aligned to the top right -->
     <div class="top-right">
-        <div class="folder-right" onclick="openLink('https://www.youtube.com/watch?v=EcC0RNsallc')">
+        <div class="folder-right" onclick="openLink('https://eprint.iacr.org/2024/970.pdf')">
             <img src="db-icon.png" alt="DB Icon" class="folder-icon">
             <p>DB1</p>
         </div>
-        <div class="folder-right" onclick="openLink('https://econompicdata.blogspot.com/2010/08/161820.html')">
+        <div class="folder-right" onclick="openLink('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpqVlelgOH6JxTjlcnyPmgqXoG7gRBukUAapTkElz1ph3443O0ehAeY3wQr0rxStoYdcUoNiZSPvqwU-MdTYCv1M_-Nopq0HvmYSxD35oSHgLp4R0vhyxwA0xH1mEhyMy4m2jtMUugIQ/s1600/GEo-Tritch-cycles.png')">
             <img src="db-icon.png" alt="DB Icon" class="folder-icon">
             <p>DB2</p>
         </div>
@@ -60,6 +60,29 @@
             <span>Start</span>
         </div>
         <div class="clock" id="clock"></div>
+    </div>
+
+    <!-- New Noticeboard -->
+    <div id="newNoticeBoard">
+        <div class="new-notice-header">
+            <span>🌰 We Know You 🌰</span>
+            <button onclick="closeNoticeBoard()">X</button>
+        </div>
+
+        <!-- Top scrolling text -->
+        <div class="new-top-ticker">
+            <p id="newTopText"></p>
+        </div>
+
+        <!-- Large placeholder for the video -->
+        <div class="video-placeholder">
+            <video id="introVideo" src="intro.mp4" controls autoplay></video>
+        </div>
+
+        <!-- Bottom scrolling text -->
+        <div class="new-bottom-ticker">
+            <p id="newBottomText"></p>
+        </div>
     </div>
 
     <!-- re:GHOST Terminal -->
