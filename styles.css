@@ -290,7 +290,7 @@ body, html {
         transform: translateX(325%); /* Start from the right edge */
     }
     100% {
-        transform: translateX(-100%); /* End on the left edge */
+        transform: translateX(-125%); /* End on the left edge */
     }
 }
 
