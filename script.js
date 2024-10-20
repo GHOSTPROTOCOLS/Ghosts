@@ -5,24 +5,32 @@ const terminalState = {
     terminalPump: false
 };
 
+// Initialize z-index counter for terminals
+let zIndexCounter = 1001; // Starting above other elements
+
 const terminalIntervals = {}; // Store interval IDs for each terminal's animation
 
 // Open a specified terminal (re:GHOST, re:DUST, or re:PUMP)
 function openManifesto(terminalId) {
     const terminal = document.getElementById(terminalId);
-    if (terminal && !terminalState[terminalId]) { // Open only if not already active
-        terminal.style.display = 'flex';
-        terminalState[terminalId] = true; // Mark as active
+    if (terminal) {
+        // Bring terminal to the front by updating z-index
+        terminal.style.zIndex = ++zIndexCounter;
 
-        if (terminalId === 'terminal') {
-            displayText('terminal-content', linesGHOST, terminalId, false); // No clickable text
-        } else if (terminalId === 'terminalDust') {
-            displayText('terminalDust-content', linesDUST, terminalId, true); // With clickable text
-        } else if (terminalId === 'terminalPump') {
-            displayText('terminalPump-content', linesPUMP, terminalId, true); // With clickable text
+        if (!terminalState[terminalId]) { // Open only if not already active
+            terminal.style.display = 'flex';
+            terminalState[terminalId] = true; // Mark as active
+
+            if (terminalId === 'terminal') {
+                displayText('terminal-content', linesGHOST, terminalId, false);
+            } else if (terminalId === 'terminalDust') {
+                displayText('terminalDust-content', linesDUST, terminalId, true);
+            } else if (terminalId === 'terminalPump') {
+                displayText('terminalPump-content', linesPUMP, terminalId, true);
+            }
         }
     } else {
-        console.error(`Terminal ${terminalId} not found or already active.`);
+        console.error(`Terminal ${terminalId} not found.`);
     }
 }
 
