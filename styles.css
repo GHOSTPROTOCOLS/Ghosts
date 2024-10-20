@@ -233,8 +233,8 @@ body, html {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1500px;  /* Fixed width for the entire noticeboard */
-    height: 925px;
+    width: 1200px;  /* Fixed width for the entire noticeboard */
+    height: 725px;
     background-color: #808080;
     border: 2px solid #ffffff;
     display: none;
