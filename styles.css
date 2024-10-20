@@ -227,3 +227,95 @@ body, html {
     text-align: center;
     margin-top: 20px; /* Optional: Adds some space above the clickable line */
 }
+
+/* New Noticeboard styles */
+#newNoticeBoard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1500px;  /* Fixed width for the entire noticeboard */
+    height: 925px;
+    background-color: #808080;
+    border: 2px solid #ffffff;
+    display: none;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.new-notice-header {
+    background-color: #505050;
+    color: #ffffff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+}
+
+.new-notice-header button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Ticker styles */
+.new-top-ticker, .new-bottom-ticker {
+    position: relative;
+    width: 1500px;  /* Fixed width for the ticker area */
+    height: 50px;
+    background-color: #404040;
+    color: #00ff00;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#newTopText, #newBottomText {
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+    will-change: transform;
+}
+
+/* Keyframes for top ticker scrolling from right to left */
+@keyframes scroll-across {
+    0% {
+        transform: translateX(250%); /* Start from the right edge */
+    }
+    100% {
+        transform: translateX(-100%); /* End on the left edge */
+    }
+}
+
+/* Keyframes for bottom ticker scrolling from left to right */
+@keyframes scroll-left-to-right {
+    0% {
+        transform: translateX(-100%); /* Start from the left edge */
+    }
+    100% {
+        transform: translateX(350%); /* End outside the right edge */
+    }
+}
+
+/* Centered video styles */
+.video-placeholder {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #303030;
+}
+
+.video-placeholder video {
+    width: 80%;
+    height: auto;
+    border: 2px solid #ffffff;
+}
