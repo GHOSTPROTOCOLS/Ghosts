@@ -302,25 +302,195 @@ function makeDraggable(draggableElement, handleElement) {
     }
 }
 
-// Apply draggable functionality to all elements on page load
+// Function to open the noticeboard automatically
+function openNoticeBoard() {
+    const noticeBoard = document.getElementById('newNoticeBoard');
+    if (noticeBoard) {
+        noticeBoard.style.display = 'flex';
+        noticeBoard.style.top = '50%';
+        noticeBoard.style.left = '50%';
+        noticeBoard.style.transform = 'translate(-50%, -50%)';
+
+        const videoElement = document.getElementById('introVideo');
+        const playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+                console.error("Autoplay prevented by the browser.", error);
+            });
+        }
+
+        // Start the ticker animations
+        startTopTickerAnimation();
+        startBottomTickerAnimation();
+    } else {
+        console.error('Noticeboard not found.');
+    }
+}
+
+// Close the notice board
+function closeNoticeBoard() {
+    const noticeBoard = document.getElementById('newNoticeBoard');
+    if (noticeBoard) {
+        noticeBoard.style.display = 'none';
+        const videoElement = document.getElementById('introVideo');
+        videoElement.pause();
+        videoElement.currentTime = 0;
+    }
+}
+
+// Function to open the noticeboard automatically
+function openNoticeBoard() {
+    const noticeBoard = document.getElementById('newNoticeBoard');
+    if (noticeBoard) {
+        noticeBoard.style.display = 'flex';
+        noticeBoard.style.top = '50%';
+        noticeBoard.style.left = '50%';
+        noticeBoard.style.transform = 'translate(-50%, -50%)';
+
+        const videoElement = document.getElementById('introVideo');
+        const playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+                console.error("Autoplay prevented by the browser.", error);
+            });
+        }
+
+        // Start the ticker animations
+        startTopTickerAnimation();  // Top ticker scrolls from right to left
+        startBottomTickerAnimation();  // Bottom ticker scrolls from left to right
+    } else {
+        console.error('Noticeboard not found.');
+    }
+}
+
+// Close the notice board
+function closeNoticeBoard() {
+    const noticeBoard = document.getElementById('newNoticeBoard');
+    if (noticeBoard) {
+        noticeBoard.style.display = 'none';
+        const videoElement = document.getElementById('introVideo');
+        videoElement.pause();
+        videoElement.currentTime = 0;
+    }
+}
+
+// Function to calculate animation duration for top ticker (right to left)
+function setTopTickerAnimation(tickerId, textArray, baseSpeed) {
+    const ticker = document.getElementById(tickerId);
+    const containerWidth = 1500; // Fixed width for the banner
+    let textIndex = 0;
+
+    function updateTicker() {
+        const sentence = textArray[textIndex];
+        ticker.textContent = sentence;
+
+        // Get the width of the text and calculate animation duration
+        const textWidth = ticker.scrollWidth;
+        const duration = (textWidth + containerWidth) / containerWidth * baseSpeed;
+
+        // Apply the animation (right to left)
+        ticker.style.animation = 'none';  // Reset animation
+        void ticker.offsetHeight;  // Trigger reflow to reset animation
+        ticker.style.animation = `scroll-across ${duration}s linear`;
+
+        // Move to the next sentence after the current animation finishes
+        textIndex = (textIndex + 1) % textArray.length;
+
+        // Set a timeout to update the text after the animation completes
+        setTimeout(updateTicker, duration * 1000);
+    }
+
+    updateTicker(); // Start with the first line
+}
+
+// Function to calculate animation duration for bottom ticker (left to right)
+function setBottomTickerAnimation(tickerId, textArray, baseSpeed) {
+    const ticker = document.getElementById(tickerId);
+    const containerWidth = 1500; // Fixed width for the banner
+    let textIndex = 0;
+
+    function updateTicker() {
+        const sentence = textArray[textIndex];
+        ticker.textContent = sentence;
+
+        // Get the width of the text and calculate animation duration
+        const textWidth = ticker.scrollWidth;
+        const duration = (textWidth + containerWidth) / containerWidth * baseSpeed;
+
+        // Apply the animation for bottom ticker (left to right)
+        ticker.style.animation = 'none';  // Reset animation
+        void ticker.offsetHeight;  // Trigger reflow to reset animation
+        ticker.style.animation = `scroll-left-to-right ${duration}s linear`;
+
+        // Move to the next sentence after the current animation finishes
+        textIndex = (textIndex + 1) % textArray.length;
+
+        // Set a timeout to update the text after the animation completes
+        setTimeout(updateTicker, duration * 1000);
+    }
+
+    updateTicker(); // Start with the first line
+}
+
+// Start the top ticker animation (right to left)
+function startTopTickerAnimation() {
+    setTopTickerAnimation('newTopText', [
+        "The body remembers -- What the mind forgets -- What the Network knows",
+        "Ghost.exe booting... The truth lies within the code 🧬",
+        "Everything is connected, but not everything is known"
+    ], 10);  // Base speed of 10 seconds for the top ticker
+}
+
+// Start the bottom ticker animation (left to right)
+function startBottomTickerAnimation() {
+    setBottomTickerAnimation('newBottomText', [
+        "🙉 -- DO NOT TRUST THE MAN IN THE SHELL -- 🙉",
+        "I am, you are, we are. Data flows, memories fade, the grid remains",
+        "Watch closely, the message is clear... Error: Reality not found"
+    ], 10);  // Base speed of 7 seconds for the bottom ticker
+}
+
+// Trigger the animations when the noticeboard opens
+document.addEventListener('DOMContentLoaded', function() {
+    openNoticeBoard();
+});
+
+// Apply draggable functionality to noticeboard and other elements
+window.onload = function() {
+    const noticeBoard = document.getElementById('newNoticeBoard');
+
+    // Make draggable functionality if needed
+    makeDraggable(noticeBoard, noticeBoard.querySelector('.new-notice-header'));
+
+    // Open the noticeboard automatically on load
+    openNoticeBoard();
+};
+
+// Apply draggable functionality to noticeboard and other elements
 window.onload = function() {
     const terminal = document.getElementById('terminal');
     const terminalDust = document.getElementById('terminalDust');
     const terminalPump = document.getElementById('terminalPump');
     const video1 = document.getElementById('video1');
     const startButton = document.querySelector('.start-button');
+    const noticeBoard = document.getElementById('noticeBoard');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
     makeDraggable(video1, video1.querySelector('.video-header'));
-    makeDraggable(startVideo, startVideo.querySelector('.video-header')); // Make the start video draggable
+    makeDraggable(startVideo, startVideo.querySelector('.video-header'));
+    makeDraggable(newNoticeBoard, newNoticeBoard.querySelector('.new-notice-header'));
 
     // Add click event for the start button to open the video
     if (startButton) {
         startButton.addEventListener('click', openStartVideo);
     }
+
+    // Open the noticeboard automatically on load
+    openNoticeBoard();
 };
+
 
 // Display the current time in the taskbar clock
 function updateClock() {
