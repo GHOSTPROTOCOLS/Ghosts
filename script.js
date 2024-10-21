@@ -67,7 +67,7 @@ function displayText(contentId, textArray, terminalId, addClickable) {
                 terminalContent.appendChild(line);
                 index++;
 
-                const delay = extendedLines.includes(textArray[index - 1]) ? 3000 : 800;
+                const delay = extendedLines.includes(textArray[index - 1]) ? 1500 : 500;
                 terminalIntervals[terminalId] = setTimeout(nextLine, delay); // Schedule the next line
             } else if (index === textArray.length && terminalState[terminalId] && addClickable) {
                 // Add clickable line at the end ONLY if addClickable is true
