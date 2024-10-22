@@ -102,7 +102,7 @@ const linesGHOST = [
     ">> TARGET_ACQUIRED: PREF PROJECT",
     ">> STEALTH_MODE: ACTIVATED",
     "",
-    "> def ghost_mod(target_project):",
+    "> def re_mod(target_project):",
     "    inject(proprietary_blackice)",
     "    cherry_pick(hottest_tech)",
     "    recode_reality(target_project)",
