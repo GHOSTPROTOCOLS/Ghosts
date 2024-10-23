@@ -332,19 +332,24 @@ function startBottomTickerAnimation() {
 // Function to show pop-up image from the bottom every 30 seconds
 function showPopUpImage() {
     const image = document.createElement('img');
-    image.src = 'super squirt pump.png'; // Replace with the actual image path
-    image.classList.add('popup-image');
+    image.src = 'super squirt pump.png'; // Replace with your actual image path
+    image.classList.add('popup-image'); // Add the CSS class for styling and animation
     document.body.appendChild(image);
 
-    // Animate the image upwards
+    // Start the animation (make it move upwards)
     setTimeout(() => {
-        image.style.transform = 'translateY(-250px)';
+        image.style.transform = 'translateY(-250px)'; // Move up
     }, 100); // Small delay for smooth animation
 
-    // Remove the image after the animation
+    // Make the image move downwards after 5 seconds
+    setTimeout(() => {
+        image.style.transform = 'translateY(100px) scaleX(-1)'; // Move down
+    }, 4500); // Trigger the downward movement after it has been on screen for 4.5 seconds
+
+    // Remove the image after the downward animation completes
     setTimeout(() => {
         image.remove();
-    }, 5000); // Duration of the image on the screen
+    }, 7000); // 5 seconds total duration
 }
 
 // Show the pop-up image every 10 seconds
