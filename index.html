@@ -86,28 +86,73 @@
         <div class="clock" id="clock"></div>
     </div>
 
-    <!-- New Noticeboard -->
-    <div id="newNoticeBoard">
-        <div class="new-notice-header">
-            <span>🌰🐿️</span>
-            <button onclick="closeNoticeBoard()">X</button>
+   <!-- Updated Noticeboard -->
+<div id="newNoticeBoard">
+    <div class="new-notice-header">
+        <span>🌰🐿️</span>
+        <button onclick="closeNoticeBoard()">X</button>
+    </div>
+
+    <!-- Top scrolling text (with duplicated text for seamless scrolling) -->
+    <div class="new-top-ticker">
+        <p id="newTopText">
+            SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- GHOST.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN --
+            &nbsp;&nbsp;&nbsp;&nbsp; <!-- Add some space between duplicate text -->
+            SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- GHOST.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN --
+        </p>
+    </div>
+
+  <!-- Main content area -->
+<div class="noticeboard-content">
+    <button class="close-btn" onclick="closeNoticeBoard()">X</button>
+    <!-- Left column containing two box columns side by side and a horizontal rectangle below -->
+    <div class="left-column">
+        <div class="box-columns-container">
+            <!-- First column: existing boxes -->
+            <div class="box-column">
+                <div class="square-box" id="square1">
+                    <img src="your-image-path.jpg" alt="Box Image" class="box-image">
+                </div>
+                <div class="square-box" id="square2"></div>
+                <div class="rectangle-box" id="rectangle1"></div>
+            </div>
+
+            <!-- Second column: new layout with rectangle first -->
+            <div class="box-column">
+                <div class="rectangle-box" id="rectangle2"></div>
+                <div class="square-box" id="square3"></div>
+                <div class="square-box" id="square4"></div>
+            </div>
         </div>
 
-        <!-- Top scrolling text -->
-        <div class="new-top-ticker">
-            <p id="newTopText"></p>
-        </div>
+        <!-- Horizontal rectangle placed at the bottom, below the side-by-side columns -->
+        <div class="horizontal-rectangle-box" id="horizontalRectangle"></div>
+    </div>
 
-        <!-- Large placeholder for the video -->
-        <div class="video-placeholder">
-            <video id="introVideo" src="intro.mp4" controls autoplay></video>
-        </div>
+    <!-- Center image -->
+    <div class="center-image">
+        <img src="newnotice.jpg" alt="Main Image" id="centerImage">
+    </div>
 
-        <!-- Bottom scrolling text -->
-        <div class="new-bottom-ticker">
-            <p id="newBottomText"></p>
+    <!-- Right Column for Text -->
+    <div class="right-column">
+        <div class="right-box">
+            <p>Your screen just got corrupted by raw, unfiltered aesthetic chaos.</p>
+            <p>Your brain is already being recoded.</p>
+            <p>This isn't your safe space anymore.</p>
         </div>
     </div>
+</div>
+
+    <!-- Bottom scrolling text (with duplicated text for seamless scrolling) -->
+    <div class="new-bottom-ticker">
+        <p id="newBottomText">
+            I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED --
+            &nbsp;&nbsp;&nbsp;&nbsp; <!-- Add some space between duplicate text -->
+            I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED --
+        </p>
+    </div>
+</div>
 
     <!-- re:GHOST Terminal -->
     <div class="terminal" id="terminal">
