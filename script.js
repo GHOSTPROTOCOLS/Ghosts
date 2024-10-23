@@ -294,17 +294,12 @@ function openNoticeBoard() {
         noticeBoard.style.left = '50%';
         noticeBoard.style.transform = 'translate(-50%, -50%)';
 
-        const videoElement = document.getElementById('introVideo');
-        const playPromise = videoElement.play();
-        if (playPromise !== undefined) {
-            playPromise.catch((error) => {
-                console.error("Autoplay prevented by the browser.", error);
-            });
-        }
-
         // Start the ticker animations
         startTopTickerAnimation();
         startBottomTickerAnimation();
+
+        // Set interval for pop-up image every 30 seconds
+        setInterval(showPopUpImage, 30000);
     } else {
         console.error('Noticeboard not found.');
     }
@@ -315,87 +310,45 @@ function closeNoticeBoard() {
     const noticeBoard = document.getElementById('newNoticeBoard');
     if (noticeBoard) {
         noticeBoard.style.display = 'none';
-        const videoElement = document.getElementById('introVideo');
-        videoElement.pause();
-        videoElement.currentTime = 0;
     }
 }
 
-// Function to calculate animation duration for top ticker (right to left)
-function setTopTickerAnimation(tickerId, textArray, baseSpeed) {
-    const ticker = document.getElementById(tickerId);
-    const containerWidth = 1500;
-    let textIndex = 0;
-
-    function updateTicker() {
-        const sentence = textArray[textIndex];
-        ticker.textContent = sentence;
-
-        // Calculate animation duration
-        const textWidth = ticker.scrollWidth;
-        const duration = (textWidth + containerWidth) / containerWidth * baseSpeed;
-
-        // Apply the animation (right to left)
-        ticker.style.animation = 'none';
-        void ticker.offsetHeight;  // Trigger reflow to reset animation
-        ticker.style.animation = `scroll-across ${duration}s linear`;
-
-        // Move to the next sentence
-        textIndex = (textIndex + 1) % textArray.length;
-
-        // Update after the animation completes
-        setTimeout(updateTicker, duration * 1000);
-    }
-
-    updateTicker(); // Start with the first line
-}
-
-// Function to calculate animation duration for bottom ticker (left to right)
-function setBottomTickerAnimation(tickerId, textArray, baseSpeed) {
-    const ticker = document.getElementById(tickerId);
-    const containerWidth = 1500;
-    let textIndex = 0;
-
-    function updateTicker() {
-        const sentence = textArray[textIndex];
-        ticker.textContent = sentence;
-
-        // Calculate animation duration
-        const textWidth = ticker.scrollWidth;
-        const duration = (textWidth + containerWidth) / containerWidth * baseSpeed;
-
-        // Apply the animation (left to right)
-        ticker.style.animation = 'none';
-        void ticker.offsetHeight;  // Trigger reflow to reset animation
-        ticker.style.animation = `scroll-left-to-right ${duration}s linear`;
-
-        // Move to the next sentence
-        textIndex = (textIndex + 1) % textArray.length;
-
-        // Update after the animation completes
-        setTimeout(updateTicker, duration * 1000);
-    }
-
-    updateTicker(); // Start with the first line
-}
-
-// Start the top ticker animation (right to left)
+// Function for continuous top ticker animation (left to right)
 function startTopTickerAnimation() {
-    setTopTickerAnimation('newTopText', [
-        "The body remembers -- What the mind forgets -- What the Network knows",
-        "Ghost.exe booting... The truth lies within the code 🧬",
-        "Everything is connected, but not everything is known"
-    ], 10); // Base speed of 10 seconds for the top ticker
+    const topText = document.getElementById('newTopText');
+    const fullText = "SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN --";
+    
+    topText.textContent = fullText;
 }
 
-// Start the bottom ticker animation (left to right)
+// Function for continuous bottom ticker animation (right to left)
 function startBottomTickerAnimation() {
-    setBottomTickerAnimation('newBottomText', [
-        "🙉 -- DO NOT TRUST THE MAN IN THE SHELL -- 🙉",
-        "I am, you are, we are. Data flows, memories fade, the grid remains",
-        "Watch closely, the message is clear... Error: Reality not found"
-    ], 10); // Base speed of 10 seconds for the bottom ticker
+    const bottomText = document.getElementById('newBottomText');
+    const fullText = "I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED --";
+
+    bottomText.textContent = fullText;
 }
+
+// Function to show pop-up image from the bottom every 30 seconds
+function showPopUpImage() {
+    const image = document.createElement('img');
+    image.src = 'super squirt pump.png'; // Replace with the actual image path
+    image.classList.add('popup-image');
+    document.body.appendChild(image);
+
+    // Animate the image upwards
+    setTimeout(() => {
+        image.style.transform = 'translateY(-250px)';
+    }, 100); // Small delay for smooth animation
+
+    // Remove the image after the animation
+    setTimeout(() => {
+        image.remove();
+    }, 5000); // Duration of the image on the screen
+}
+
+// Show the pop-up image every 10 seconds
+setInterval(showPopUpImage, 20000); // 10000 milliseconds = 10 seconds
 
 // Function to simulate a user click on the Start button
 function simulateUserClick() {
@@ -415,22 +368,19 @@ window.onload = function() {
     const terminal = document.getElementById('terminal');
     const terminalDust = document.getElementById('terminalDust');
     const terminalPump = document.getElementById('terminalPump');
-    const video1 = document.getElementById('video1');
-    const startButton = document.querySelector('.start-button');
     const noticeBoard = document.getElementById('newNoticeBoard');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
-    makeDraggable(video1, video1.querySelector('.video-header'));
     makeDraggable(noticeBoard, noticeBoard.querySelector('.new-notice-header'));
 
     // Bind the Start button to open the noticeboard
+    const startButton = document.querySelector('.start-button');
     if (startButton) {
         startButton.addEventListener('click', openNoticeBoard);
     }
 };
-
 
 // Display the current time in the taskbar clock
 function updateClock() {
