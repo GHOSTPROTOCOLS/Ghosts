@@ -298,7 +298,7 @@ body, html {
 /* Continuous scrolling keyframes for top banner */
 @keyframes scroll-left-to-right-seamless {
     0% {
-        transform: translateX(15%); /* Start fully off-screen to the right */
+        transform: translateX(7.5%); /* Start fully off-screen to the right */
     }
     100% {
         transform: translateX(-100%); /* Move fully off-screen to the left */
@@ -317,11 +317,11 @@ body, html {
 
 /* Apply the seamless scrolling animations */
 .new-top-ticker #newTopText {
-    animation: scroll-left-to-right-seamless 120s linear infinite; /* Adjust the speed as needed */
+    animation: scroll-left-to-right-seamless 240s linear infinite; /* Adjust the speed as needed */
 }
 
 .new-bottom-ticker #newBottomText {
-    animation: scroll-right-to-left-seamless 120s linear infinite; /* Adjust the speed as needed */
+    animation: scroll-right-to-left-seamless 240s linear infinite; /* Adjust the speed as needed */
 }
 
 .noticeboard-content {
@@ -355,17 +355,17 @@ body, html {
 
 /* Square and rectangle boxes */
 .square-box, .rectangle-box {
-    background-color: #00ff00;
+    background-color: #ffffff;
     border: 2px solid #ffffff;
 }
 
 .square-box {
-    width: 100px;
+    width: 150px;
     height: 100px;
 }
 
 .rectangle-box {
-    width: 100px;
+    width: 150px;
     height: 200px;
 }
 
@@ -373,7 +373,7 @@ body, html {
 .horizontal-rectangle-box {
     background-color: #00ff00;
     border: 2px solid #ffffff;
-    width: 214px; /* Spanning both columns */
+    width: 314px; /* Spanning both columns */
     height: 100px;
     margin-top: 5px; /* Spacing from the columns above */
 }
@@ -384,7 +384,9 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY(-25px);
+    transform: translateY(-245px);
+    margin-top: -25px;
+    transform: translateX(-5px);
 }
 
 .center-image img {
@@ -392,6 +394,9 @@ body, html {
     height: auto;
     max-width: 675px;
     border: 2px solid #ffffff;
+    transform: translateY(-25px);
+    margin-top: -25px;
+    transform: translateX(-5px);
 }
 
 /* Right column for text */
@@ -401,6 +406,9 @@ body, html {
     flex-direction: column;
     justify-content: flex-start;
     width: 150px;
+    transform: translateY(-25px);
+    margin-top: 7px;
+    transform: translateX(-10px);
     margin-right: -120px;
 }
 
@@ -410,7 +418,9 @@ body, html {
     padding: 10px;
     color: #000000;
     font-size: 14px;
-    transform: translateY(14px);
+    transform: translateY(-155px);
+    margin-top: 7px;
+    transform: translateX(-10px);
     width: 150px;
 }
 
@@ -422,7 +432,7 @@ body, html {
     width: 500px;   /* Adjust width as necessary */
     height: auto;
     transition: transform 2s ease-in-out; /* Smooth transition for moving upwards */
-    z-index: 1001; /* Ensure it's on top of other content */
+    z-index: 9999; /* Ensure it's on top of other content */
 }
 
 /* Close button styling */
