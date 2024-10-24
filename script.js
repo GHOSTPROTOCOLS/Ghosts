@@ -289,6 +289,8 @@ function makeDraggable(draggableElement, handleElement) {
 function openNoticeBoard() {
     const noticeBoard = document.getElementById('newNoticeBoard');
     if (noticeBoard) {
+        // Bring noticeboard to the front by updating z-index
+        noticeBoard.style.zIndex = ++zIndexCounter; 
         noticeBoard.style.display = 'flex';
         noticeBoard.style.top = '50%';
         noticeBoard.style.left = '50%';
@@ -298,8 +300,8 @@ function openNoticeBoard() {
         startTopTickerAnimation();
         startBottomTickerAnimation();
 
-        // Set interval for pop-up image every 30 seconds
-        setInterval(showPopUpImage, 30000);
+        // Set interval for pop-up image every 20 seconds
+        setInterval(showPopUpImage, 20000);
     } else {
         console.error('Noticeboard not found.');
     }
@@ -316,7 +318,7 @@ function closeNoticeBoard() {
 // Function for continuous top ticker animation (left to right)
 function startTopTickerAnimation() {
     const topText = document.getElementById('newTopText');
-    const fullText = "SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN --";
+    const fullText = "SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN -- SUPER SEXY ANNOUNCEMENTS OF THE WEEK -- THE BODY REMEMBERS, WHAT THE MIND FORGETS, WHAT THE NETWORK KNOWS -- RE.EXE BOOTING... THE TRUTH LIES WITHIN THE CODE 🧬 -- EVERYTHING IS CONNECTED, BUT NOT EVERYTHING IS KNOWN --";
     
     topText.textContent = fullText;
 }
@@ -324,7 +326,7 @@ function startTopTickerAnimation() {
 // Function for continuous bottom ticker animation (right to left)
 function startBottomTickerAnimation() {
     const bottomText = document.getElementById('newBottomText');
-    const fullText = "I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED --";
+    const fullText = "I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED -- I AM, YOU ARE, WE ARE. DATA FLOWS, MEMORIES FADE, THE GRID REMAINS -- WATCH CLOSELY, THE MESSAGE IS CLEAR... ERROR: REALITY NOT FOUND -- DO NOT TRUST THE MAN IN THE SHELL — HIS WORDS ARE WIRED, HIS ACTIONS ENCRYPTED --";
 
     bottomText.textContent = fullText;
 }
@@ -343,7 +345,7 @@ function showPopUpImage() {
 
     // Make the image move downwards after 5 seconds
     setTimeout(() => {
-        image.style.transform = 'translateY(100px) scaleX(-1)'; // Move down
+        image.style.transform = 'translateY(100px)'; // Move down
     }, 4500); // Trigger the downward movement after it has been on screen for 4.5 seconds
 
     // Remove the image after the downward animation completes
@@ -351,9 +353,6 @@ function showPopUpImage() {
         image.remove();
     }, 7000); // 5 seconds total duration
 }
-
-// Show the pop-up image every 10 seconds
-setInterval(showPopUpImage, 20000); // 10000 milliseconds = 10 seconds
 
 // Function to simulate a user click on the Start button
 function simulateUserClick() {
@@ -374,11 +373,14 @@ window.onload = function() {
     const terminalDust = document.getElementById('terminalDust');
     const terminalPump = document.getElementById('terminalPump');
     const noticeBoard = document.getElementById('newNoticeBoard');
+    const videoPopup = document.getElementById('video1');
 
     makeDraggable(terminal, terminal.querySelector('.terminal-header'));
     makeDraggable(terminalDust, terminalDust.querySelector('.terminal-header'));
     makeDraggable(terminalPump, terminalPump.querySelector('.terminal-header'));
-    makeDraggable(noticeBoard, noticeBoard.querySelector('.new-notice-header'));
+    makeDraggable(noticeBoard, noticeBoard.querySelector('.new-top-ticker')); 
+    makeDraggable(videoPopup, videoPopup.querySelector('.video-header')); // Make OS Enterprise video draggable
+
 
     // Bind the Start button to open the noticeboard
     const startButton = document.querySelector('.start-button');
