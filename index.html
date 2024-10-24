@@ -63,15 +63,15 @@
     </div>
     <!-- New Icons for DB1 and DB2, aligned to the top right -->
     <div class="top-right">
-        <div class="folder-right" onclick="openLink('https://eprint.iacr.org/2024/970.pdf')">
+        <div class="folder-right" onclick="openLink('https://www.mrob.com/pub/religion/extro_prin.html')">
             <img src="db-icon.png" alt="DB Icon" class="folder-icon">
             <p>DB1</p>
         </div>
-        <div class="folder-right" onclick="openLink('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpqVlelgOH6JxTjlcnyPmgqXoG7gRBukUAapTkElz1ph3443O0ehAeY3wQr0rxStoYdcUoNiZSPvqwU-MdTYCv1M_-Nopq0HvmYSxD35oSHgLp4R0vhyxwA0xH1mEhyMy4m2jtMUugIQ/s1600/GEo-Tritch-cycles.png')">
+        <div class="folder-right" onclick="openAccessDeniedPopup('DB2')">
             <img src="db-icon.png" alt="DB Icon" class="folder-icon">
             <p>DB2</p>
         </div>
-        <div class="folder-right" onclick="openLink('https://www.mrob.com/pub/religion/extro_prin.html')">
+        <div class="folder-right" onclick="openAccessDeniedPopup('DB3')">
             <img src="db-icon.png" alt="DB Icon" class="folder-icon">
             <p>DB3</p>
         </div>
@@ -111,22 +111,34 @@
             <!-- First column: existing boxes -->
             <div class="box-column">
                 <div class="square-box" id="square1">
-                    <img src="your-image-path.jpg" alt="Box Image" class="box-image">
+                    <img src="box1.jpg" alt="Box Image" class="box-image">
                 </div>
-                <div class="square-box" id="square2"></div>
-                <div class="rectangle-box" id="rectangle1"></div>
+                <div class="square-box" id="square2">
+                    <img src="box3.jpg" alt="Box Image" class="box-image">
+                </div>
+                <div class="rectangle-box" id="rectangle1">
+                    <img src="rect1.webp" alt="Box Image" class="box-image">
+                </div>
             </div>
 
             <!-- Second column: new layout with rectangle first -->
             <div class="box-column">
-                <div class="rectangle-box" id="rectangle2"></div>
-                <div class="square-box" id="square3"></div>
-                <div class="square-box" id="square4"></div>
+                <div class="rectangle-box" id="rectangle2">
+                    <img src="rect2.webp" alt="Box Image" class="box-image">
+                </div>
+                <div class="square-box" id="square3">
+                    <img src="box4.jpg" alt="Box Image" class="box-image">
+                </div>
+                <div class="square-box" id="square4">
+                    <img src="box5.jpg" alt="Box Image" class="box-image">
+                </div>
             </div>
         </div>
 
         <!-- Horizontal rectangle placed at the bottom, below the side-by-side columns -->
-        <div class="horizontal-rectangle-box" id="horizontalRectangle"></div>
+        <div class="horizontal-rectangle-box" id="horizontalRectangle">
+            <img src="box2.jpg" alt="Box Image" class="box-image">
+        </div>
     </div>
 
     <!-- Center image -->
