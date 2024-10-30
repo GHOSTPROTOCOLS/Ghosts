@@ -127,7 +127,6 @@ const linesGHOST = [
     ">> MISSION_STATUS: IN_PROGRESS",
     ">> ETA: NOW",
     "",
-    "C:\\>WAKE_UP_SAMURAI.exe"
 ];
 
 // Existing text for re:DUST
