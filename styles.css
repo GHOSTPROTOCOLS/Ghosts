@@ -392,7 +392,7 @@ body, html {
 .center-image img {
     width: 90%;
     height: auto;
-    max-width: 675px;
+    max-width: 550px;
     border: 2px solid #ffffff;
     transform: translateY(-25px);
     margin-top: -25px;
